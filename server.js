@@ -8,8 +8,13 @@ const connectDB = require('./database')
 app.use(express.json());
 dotenv.config();
 connectDB();
-
-
+app.get('/', (req, res) => {
+  try {
+    res.send("hii");
+  } catch (error) {
+    res.status(500).send("Something went wrong!");
+  }
+});
 app.use('/api/prices',router);
 
 // 404 Middleware
